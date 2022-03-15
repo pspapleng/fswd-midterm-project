@@ -1,18 +1,13 @@
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import PostCard from "../components/PostCard";
-import request from "../services/api/index";
-import {
-  categoryAdded,
-  categorySetted,
-  selectCategoryById,
-} from "../store/reducer/categorySlice";
-import { postSetted, selectAllPosts } from "../store/reducer/postSlice";
-import { selectTagById, tagAdded, tagSetted } from "../store/reducer/tagSlice";
-import { selectUserById, userSetted } from "../store/reducer/userSlice";
+import { selectCategoryById } from "../store/reducer/categorySlice";
+import { selectAllPosts } from "../store/reducer/postSlice";
+import { selectTagById } from "../store/reducer/tagSlice";
+import { selectUserById } from "../store/reducer/userSlice";
 
 function Home() {
   const postAggregate = useSelector((state) => {
@@ -34,25 +29,6 @@ function Home() {
       };
     });
   });
-  const dispatch = useDispatch();
-  useEffect(() => {
-    const fetchMyAPI = async () => {
-      const users = await request.getAllUser();
-      dispatch(userSetted(users.data));
-
-      const categories = await request.getAllCategory();
-      dispatch(categorySetted(categories.data));
-
-      const tags = await request.getAllTag();
-      dispatch(tagSetted(tags.data));
-
-      const posts = await request.getAllPost();
-      dispatch(postSetted(posts.data));
-
-      return Promise.resolve();
-    };
-    fetchMyAPI();
-  }, [dispatch]);
 
   return (
     <div>

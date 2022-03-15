@@ -14,6 +14,8 @@ export const postSlice = createSlice({
 });
 
 export const selectAllPosts = (state) => state.post;
+export const selectPostByUserId = (state, userId) =>
+  state.post.filter((e) => e.author === userId);
 
 export const { postAdded, postSetted } = postSlice.actions;
 

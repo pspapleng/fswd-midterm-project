@@ -29,12 +29,12 @@ const PostCard = ({ posts }) => {
                     src={post?.authorDetail?.avatar_urls[96]}
                   ></Avatar>
                 }
-                title={post.authorDetail.name}
-                subheader={dayjs(post.date).format("DD/MM/YYYY | HH:mm A")}
+                title={post?.authorDetail.name}
+                subheader={dayjs(post?.date).format("DD/MM/YYYY | HH:mm A")}
               />
               <CardContent sx={{ height: 270 }}>
                 <Stack direction="row" spacing={1}>
-                  {post.tagsDetail.map((tag, index) => (
+                  {post?.tagsDetail.map((tag, index) => (
                     <Link
                       key={index}
                       sx={{ fontSize: "0.9rem" }}
@@ -60,7 +60,7 @@ const PostCard = ({ posts }) => {
                 ></div>
                 <br />
                 <Stack direction="row" spacing={1}>
-                  {post.categoriesDetail.map((category, index) => (
+                  {post?.categoriesDetail.map((category, index) => (
                     <Chip
                       key={index}
                       label={category.name}
@@ -74,7 +74,7 @@ const PostCard = ({ posts }) => {
                   justifyContent: "center",
                 }}
               >
-                <RouterLink to={`Post/${post.id}`}>
+                <RouterLink to={`/Post/${post.id}`}>
                   <Button
                     fullWidth
                     size="large"

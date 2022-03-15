@@ -17,9 +17,33 @@ const api = {
       console.log(e);
     }
   },
-  getAllComment: async () => {
+  createComment: async ({ post, content }) => {
     try {
-      const response = await request.get(`/comments`);
+      const response = await request.post(
+        `/comments`,
+        {
+          post,
+          content,
+        },
+        {
+          auth: {
+            username: "fswd",
+            password: "fswd-cms",
+          },
+        }
+      );
+      return response;
+    } catch (e) {
+      console.log(e);
+    }
+  },
+  getAllComment: async ({ post }) => {
+    try {
+      const response = await request.get(`/comments`, {
+        params: {
+          ...(post && { post }),
+        },
+      });
       return response;
     } catch (e) {
       console.log(e);

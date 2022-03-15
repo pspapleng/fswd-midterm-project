@@ -36,7 +36,6 @@ const NavBar = () => {
           >
             B-CMS
           </Typography>
-
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -68,9 +67,9 @@ const NavBar = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">
-                    <Link to={`${page}`}>{page}</Link>
-                  </Typography>
+                  <Link to={`${page}`}>
+                    <Typography textAlign="center">{page}</Typography>
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>
