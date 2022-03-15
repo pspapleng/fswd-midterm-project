@@ -11,7 +11,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 
-const pages = ["Home", "Category", "Tag"];
+const pages = ["Home", "Category", "Tag", "Author"];
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);

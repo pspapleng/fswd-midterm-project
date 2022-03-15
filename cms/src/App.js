@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { BrowserRouter as Router, useRoutes } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Author from "./pages/Author";
+import AuthorList from "./pages/AuthorList";
 import Category from "./pages/Category";
 import Home from "./pages/Home";
 import Post from "./pages/Post";
@@ -20,6 +21,7 @@ const App = () => {
     { path: "/Post/:id", element: <Post /> },
     { path: "/Category", element: <Category /> },
     { path: "/Tag", element: <Tag /> },
+    { path: "/Author", element: <AuthorList /> },
     { path: "/Author/:id", element: <Author /> },
   ]);
   return routes;
@@ -31,6 +33,7 @@ const AppWrapper = () => {
     const fetchMyAPI = async () => {
       const users = await request.getAllUser();
       dispatch(userSetted(users.data));
+      console.log(users.data);
 
       const categories = await request.getAllCategory();
       dispatch(categorySetted(categories.data));

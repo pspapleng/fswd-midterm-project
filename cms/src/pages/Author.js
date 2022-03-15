@@ -24,7 +24,6 @@ function Author() {
       const tagsDetail = tags.map((tagId) => {
         return selectTagById(state, tagId);
       });
-      console.log(authorDetail);
       return {
         ...post,
         authorDetail: authorDetail,

@@ -13,7 +13,7 @@ export const userSlice = createSlice({
   },
 });
 
-export const selectAllUsers = (state) => state.users;
+export const selectAllUsers = (state) => state.user;
 
 export const selectUserById = (state, userId) =>
   state.user.find((user) => user.id === userId);
