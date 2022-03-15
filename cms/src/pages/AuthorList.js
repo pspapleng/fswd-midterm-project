@@ -1,9 +1,7 @@
 import {
-  Avatar,
   Card,
   CardActionArea,
   CardContent,
-  CardHeader,
   CardMedia,
   Grid,
   Typography,
@@ -43,6 +41,7 @@ function AuthorList() {
                     variant="h5"
                     component="div"
                     textAlign={"center"}
+                    color={"black"}
                   >
                     {author?.name}
                   </Typography>

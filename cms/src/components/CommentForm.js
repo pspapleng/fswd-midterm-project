@@ -9,9 +9,11 @@ import { commentUnShift } from "../store/reducer/commentSlice";
 const CommentForm = () => {
   const { id } = useParams();
   const [value, setValue] = useState("");
+
   const handleChange = (event) => {
     setValue(event.target.value);
   };
+
   const dispatch = useDispatch();
   const onSubmit = () => {
     return request.createComment({ post: id, content: value }).then((res) => {
