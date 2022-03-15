@@ -1,18 +1,17 @@
 import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { BrowserRouter as Router, useRoutes } from "react-router-dom";
 import NavBar from "./components/NavBar";
-
+import Author from "./pages/Author";
+import Category from "./pages/Category";
 import Home from "./pages/Home";
 import Post from "./pages/Post";
-import Category from "./pages/Category";
-import Author from "./pages/Author";
-import { useDispatch } from "react-redux";
+import Tag from "./pages/Tag";
 import request from "./services/api/index";
-import { userSetted } from "./store/reducer/userSlice";
 import { categorySetted } from "./store/reducer/categorySlice";
-import { tagSetted } from "./store/reducer/tagSlice";
 import { postSetted } from "./store/reducer/postSlice";
-import { commentSetted } from "./store/reducer/commentSlice";
+import { tagSetted } from "./store/reducer/tagSlice";
+import { userSetted } from "./store/reducer/userSlice";
 
 const App = () => {
   let routes = useRoutes([
@@ -20,6 +19,7 @@ const App = () => {
     { path: "/Home", element: <Home /> },
     { path: "/Post/:id", element: <Post /> },
     { path: "/Category", element: <Category /> },
+    { path: "/Tag", element: <Tag /> },
     { path: "/Author/:id", element: <Author /> },
   ]);
   return routes;

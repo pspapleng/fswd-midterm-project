@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import CommentForm from "../components/CommentForm";

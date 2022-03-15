@@ -1,17 +1,14 @@
-import { Box, Chip, Grid, Stack, Typography } from "@mui/material";
+import { Box, Grid, Link, Stack, Typography } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 import PostCard from "../components/PostCard";
-import {
-  selectAllCategories,
-  selectCategoryById,
-} from "../store/reducer/categorySlice";
+import { selectCategoryById } from "../store/reducer/categorySlice";
 import { selectAllPosts } from "../store/reducer/postSlice";
-import { selectTagById } from "../store/reducer/tagSlice";
+import { selectAllTags, selectTagById } from "../store/reducer/tagSlice";
 import { selectUserById } from "../store/reducer/userSlice";
 
-function Category() {
-  const categories = useSelector(selectAllCategories);
+function Tag() {
+  const tags = useSelector(selectAllTags);
 
   const postAggregate = useSelector((state) => {
     const allPosts = selectAllPosts(state);
@@ -33,9 +30,9 @@ function Category() {
     });
   });
 
-  const categorize = (catId) => {
+  const categorize = (tagId) => {
     const res = postAggregate.filter((p) => {
-      return p.categories.some((e) => e === catId);
+      return p.tags.some((e) => e === tagId);
     });
     return res;
   };
@@ -56,34 +53,35 @@ function Category() {
               fontWeight: "bold",
             }}
           >
-            Categories
+            Tags
           </Typography>
-          <Stack direction="row" spacing={2}>
-            {categories.map((category, index) => (
-              <Chip
+          <Stack direction="row" spacing={1}>
+            {tags.map((tag, index) => (
+              <Link
                 key={index}
-                label={category.name}
-                component="a"
-                href={`#${category.name}`}
-                clickable
-                sx={{ backgroundColor: "#d4cccf", fontSize: "1rem" }}
-              />
+                sx={{ fontSize: "0.9rem" }}
+                color="#7c7c74"
+                href={`#${tag.name}`}
+                underline="hover"
+              >
+                #{tag.name}
+              </Link>
             ))}
           </Stack>
         </Box>
       </Grid>
-      {categories.map((category, index) => (
+      {tags.map((tag, index) => (
         <Grid id="row" container key={index}>
           <Stack direction="row" spacing={2} marginBottom={2}>
             <Typography
-              id={`${category.name}`}
+              id={`${tag.name}`}
               sx={{
                 fontSize: "2rem",
                 fontWeight: "bold",
                 ml: 4,
               }}
             >
-              {category.name}
+              #{tag.name}
             </Typography>
             <Typography
               sx={{
@@ -91,11 +89,11 @@ function Category() {
                 color: "#b4acad",
               }}
             >
-              {categorize(category.id).length} posts
+              {categorize(tag.id).length} posts
             </Typography>
           </Stack>
           <Grid id="row" container marginBottom={2}>
-            <PostCard posts={categorize(category.id)} />
+            <PostCard posts={categorize(tag.id)} />
           </Grid>
         </Grid>
       ))}
@@ -103,4 +101,4 @@ function Category() {
   );
 }
 
-export default Category;
+export default Tag;

@@ -13,6 +13,8 @@ export const tagSlice = createSlice({
   },
 });
 
+export const selectAllTags = (state) => state.tag;
+
 export const selectTagById = (state, tageId) =>
   state.tag.find((tage) => tage.id === tageId);
 
