@@ -9,7 +9,7 @@
   <p align="center">
   <strong> minimal blog with minimum requirment </strong>
     <br />
-    <a href="https://b-cms-d917a.web.app/">View B-CMS »</a>
+    <a href="https://b-cms-d917a.web.app/">visit B-CMS »</a>
     <br />
     <br />
     <a href="https://github.com/pspapleng/fswd-midterm-project">Explore The Doc</a>
